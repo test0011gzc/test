@@ -563,9 +563,9 @@ def create_week_excel(stub_data):
 
         title_index_list = ['A1', 'B1', 'C1', 'D1', 'E1', 'E2', 'F2', 'G1', 'G2', 'H2',
                             'I2', 'J1', 'J2', 'K2', 'L2', 'M1', 'M2', 'N2', 'O2']
-        title_value_list = ['日付', '代理店名', '加盟店名', '店舗数', '盟店MDR', 'WeChat', 'Alipay', '取引件数', 'WeChat', 'Alipay',
-                            'WeChat+Alipay', '取扱高', 'WeChat', 'Alipay', 'WeChat+Alipay', '銀行收益', 'WeChat', 'Alipay',
-                            'WeChat+Alipay']
+        title_value_list = ['日付', '代理店名', '加盟店名', '店舗数', '加盟店MDR', 'WeChatPay', 'AliPay', '取引件数', 'WeChatPay', 'AliPay',
+                            'WeChatPay+AliPay', '取扱高', 'WeChatPay', 'AliPay', 'WeChatPay+AliPay', '銀行收益', 'WeChatPay', 'AliPay',
+                            'WeChatPay+AliPay']
 
         # title块赋值及样式设计
         for t, t_v in zip(title_index_list, title_value_list):
@@ -712,16 +712,26 @@ def create_week_excel(stub_data):
             for c in columns_list:
                 ws1[c + str(columns)].style = content_style2
 
-        ws1['D' + str(row)].value = sub_mch_total_count
-        ws1['G' + str(row)].value = transaction_total_count_wechat
-        ws1['H' + str(row)].value = transaction_total_count_alipay
-        ws1['I' + str(row)].value = transaction_total_count_wechat_alipay
-        ws1['J' + str(row)].value = transaction_fee_wechat_count
-        ws1['K' + str(row)].value = transaction_fee_alipay_count
-        ws1['L' + str(row)].value = transaction_fee_wechat_alipay_count
-        ws1['M' + str(row)].value = agency_profit_wechat_count
-        ws1['N' + str(row)].value = agency_profit_alipay_count
-        ws1['O' + str(row)].value = agency_profit_wechat_alipay_count
+        ws1['D' + str(row)].value = convert_str_contain_comma_v2(sub_mch_total_count)
+        ws1['G' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_wechat)
+        ws1['H' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_alipay)
+        ws1['I' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_wechat_alipay)
+        ws1['J' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_wechat_count)
+        ws1['K' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_alipay_count)
+        ws1['L' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_wechat_alipay_count)
+        ws1['M' + str(row)].value = convert_str_contain_comma_v2(agency_profit_wechat_count)
+        ws1['N' + str(row)].value = convert_str_contain_comma_v2(agency_profit_alipay_count)
+        ws1['O' + str(row)].value = convert_str_contain_comma_v2(agency_profit_wechat_alipay_count)
+        # ws1['D' + str(row)].value = sub_mch_total_count
+        # ws1['G' + str(row)].value = transaction_total_count_wechat
+        # ws1['H' + str(row)].value = transaction_total_count_alipay
+        # ws1['I' + str(row)].value = transaction_total_count_wechat_alipay
+        # ws1['J' + str(row)].value = transaction_fee_wechat_count
+        # ws1['K' + str(row)].value = transaction_fee_alipay_count
+        # ws1['L' + str(row)].value = transaction_fee_wechat_alipay_count
+        # ws1['M' + str(row)].value = agency_profit_wechat_count
+        # ws1['N' + str(row)].value = agency_profit_alipay_count
+        # ws1['O' + str(row)].value = agency_profit_wechat_alipay_count
 
         # 当前日报表的最后一天为报表标题
         file_name = new_end_date.split('.')
@@ -816,9 +826,9 @@ def create_week_excel(stub_data):
 
         title_index_list = ['A1', 'B1', 'C1', 'D1', 'E1', 'E2', 'F2', 'G1', 'G2', 'H2',
                             'I2', 'J1', 'J2', 'K2', 'L2', 'M1', 'M2', 'N2', 'O2']
-        title_value_list = ['日付', '代理店名', '加盟店名', '店舗数', '盟店MDR', 'WeChat', 'Alipay', '取引件数', 'WeChat', 'Alipay',
-                            'WeChat+Alipay', '取扱高', 'WeChat', 'Alipay', 'WeChat+Alipay', '銀行收益', 'WeChat', 'Alipay',
-                            'WeChat+Alipay']
+        title_value_list = ['日付', '代理店名', '加盟店名', '店舗数', '加盟店MDR', 'WeChatPay', 'AliPay', '取引件数', 'WeChatPay', 'AliPay',
+                            'WeChatPay+AliPay', '取扱高', 'WeChatPay', 'AliPay', 'WeChatPay+AliPay', '銀行收益', 'WeChatPay', 'AliPay',
+                            'WeChatPay+AliPay']
 
         title_style_index = wb._named_styles.names.index('title_style')
         content_style1_index = wb._named_styles.names.index('content_style1')
@@ -934,16 +944,16 @@ def create_week_excel(stub_data):
             for c in columns_list:
                 ws_new[c + str(columns)].style = content_style2
 
-        ws_new['D' + str(row)].value = sub_mch_total_count
-        ws_new['G' + str(row)].value = transaction_total_count_wechat
-        ws_new['H' + str(row)].value = transaction_total_count_alipay
-        ws_new['I' + str(row)].value = transaction_total_count_wechat_alipay
-        ws_new['J' + str(row)].value = transaction_fee_wechat_count
-        ws_new['K' + str(row)].value = transaction_fee_alipay_count
-        ws_new['L' + str(row)].value = transaction_fee_wechat_alipay_count
-        ws_new['M' + str(row)].value = agency_profit_wechat_count
-        ws_new['N' + str(row)].value = agency_profit_alipay_count
-        ws_new['O' + str(row)].value = agency_profit_wechat_alipay_count
+        ws_new['D' + str(row)].value = convert_str_contain_comma_v2(sub_mch_total_count)
+        ws_new['G' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_wechat)
+        ws_new['H' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_alipay)
+        ws_new['I' + str(row)].value = convert_str_contain_comma_v2(transaction_total_count_wechat_alipay)
+        ws_new['J' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_wechat_count)
+        ws_new['K' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_alipay_count)
+        ws_new['L' + str(row)].value = convert_str_contain_comma_v2(transaction_fee_wechat_alipay_count)
+        ws_new['M' + str(row)].value = convert_str_contain_comma_v2(agency_profit_wechat_count)
+        ws_new['N' + str(row)].value = convert_str_contain_comma_v2(agency_profit_alipay_count)
+        ws_new['O' + str(row)].value = convert_str_contain_comma_v2(agency_profit_wechat_alipay_count)
 
         # 当前日报表的最后一天为报表标题
         file_name = new_end_date.split('.')

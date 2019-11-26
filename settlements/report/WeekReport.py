@@ -303,4 +303,4 @@ class WeekReport(object):
 
 # if __name__ == '__main__':
 #     WeekReport().get_master_data(begin_date='2019-09-01', end_date='2019-09-15')
-base_config.get('JP_DAY_WEEK_RATE_CONFIG')
+# base_config.get('JP_DAY_WEEK_RATE_CONFIG')

@@ -93,8 +93,8 @@ class WeekResult(object):
                                 'wechat+alipay': int(round(row['transcation_fee_wechat']/100,0) + round(row['transcation_fee_alipay']/100,0))
                             },
                             'agency_profit': {
-                                'wechat': round(row['agency_profit_wechat']/100,0),
-                                'alipay': round(row['agency_profit_alipay']/100,0),
+                                'wechat': int(round(row['agency_profit_wechat']/100,0)),
+                                'alipay': int(round(row['agency_profit_alipay']/100,0)),
                                 'wechat+alipay': int(round(row['agency_profit_wechat']/100,0) + round(row['agency_profit_alipay']/100,0))
                             }
                         }
