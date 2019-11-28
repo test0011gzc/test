@@ -258,6 +258,7 @@ class WeekReport(object):
                   '`sub_mch_count`,' \
                   '`use_wechat`,' \
                   '`mdr_wechat`,' \
+                  '`use_alipay`,' \
                   '`mdr_alipay`,' \
                   '`transcation_count_wechat`,' \
                   '`transcation_count_alipay`,' \
@@ -280,6 +281,7 @@ class WeekReport(object):
                   '"{sub_mch_count}",' \
                   '"{use_wechat}",' \
                   '"{mdr_wechat}",' \
+                  '"{use_alipay}",' \
                   '"{mdr_alipay}",' \
                   '"{transcation_count_wechat}",' \
                   '"{transcation_count_alipay}",' \
